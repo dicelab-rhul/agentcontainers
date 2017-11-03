@@ -5,6 +5,7 @@ import java.util.Collection;
 public interface Universe {
     public abstract UniverseAppearance getAppearance();
     public abstract Collection<Ambient> getAmbients();
+    public abstract Ambient getMainAmbient();
     
     public default int countSubContainers() {
 	return getAmbients().size();

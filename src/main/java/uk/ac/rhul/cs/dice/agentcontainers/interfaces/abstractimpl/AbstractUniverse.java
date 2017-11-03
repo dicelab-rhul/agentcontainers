@@ -1,7 +1,7 @@
 package uk.ac.rhul.cs.dice.agentcontainers.interfaces.abstractimpl;
 
-import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Ambient;
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Universe;
@@ -9,16 +9,16 @@ import uk.ac.rhul.cs.dice.agentcontainers.interfaces.UniverseAppearance;
 
 public abstract class AbstractUniverse implements Universe {
     private UniverseAppearance appearance;
-    private Collection<Ambient> ambients;
+    private List<Ambient> ambients;
     
     public AbstractUniverse(UniverseAppearance appearance) {
 	this.appearance = appearance;
-	this.ambients = Collections.emptySet();
+	this.ambients = Collections.emptyList();
     }
     
-    public AbstractUniverse(UniverseAppearance appearance, Collection<Ambient> ambients) {
+    public AbstractUniverse(UniverseAppearance appearance, List<Ambient> ambients) {
 	this.appearance = appearance;
-	this.ambients = ambients == null ? Collections.emptySet() : ambients;
+	this.ambients = ambients == null ? Collections.emptyList() : ambients;
     }
     
     public AbstractUniverse(UniverseAppearance appearance, Ambient ambient) {
@@ -31,11 +31,16 @@ public abstract class AbstractUniverse implements Universe {
     
     @Override
     public UniverseAppearance getAppearance() {
-	return appearance;
+	return this.appearance;
     }
     
     @Override
-    public Collection<Ambient> getAmbients() {
-	return ambients;
+    public List<Ambient> getAmbients() {
+	return this.ambients;
+    }
+    
+    @Override
+    public Ambient getMainAmbient() {
+        return this.ambients == null || this.ambients.isEmpty() ? null : this.ambients.get(0);
     }
 }
