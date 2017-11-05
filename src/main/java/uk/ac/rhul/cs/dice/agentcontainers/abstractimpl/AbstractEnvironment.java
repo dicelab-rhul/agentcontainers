@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs.dice.agentcontainers.interfaces.abstractimpl;
+package uk.ac.rhul.cs.dice.agentcontainers.abstractimpl;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -10,6 +10,10 @@ import uk.ac.rhul.cs.dice.agentcontainers.interfaces.EnvironmentAppearance;
 public abstract class AbstractEnvironment implements Environment {
     private EnvironmentAppearance appearance;
     private Collection<Container> subEnvironments;
+    
+    public AbstractEnvironment() {
+	this.subEnvironments = Collections.emptySet();
+    }
     
     public AbstractEnvironment(EnvironmentAppearance appearance) {
 	this.appearance = appearance;
@@ -37,6 +41,10 @@ public abstract class AbstractEnvironment implements Environment {
     @Override
     public Collection<Container> getSubContainers() {
 	return this.subEnvironments;
+    }
+    
+    public void setAppearance(EnvironmentAppearance appearance) {
+	this.appearance = appearance;
     }
     
     @Override

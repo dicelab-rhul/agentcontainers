@@ -1,4 +1,4 @@
-package uk.ac.rhul.cs.dice.agentcontainers.interfaces.abstractimpl;
+package uk.ac.rhul.cs.dice.agentcontainers.abstractimpl;
 
 import java.util.Collections;
 import java.util.List;
