@@ -54,4 +54,23 @@ public class AbstractCoordinates implements Coordinates {
     public String toString() {
 	return "(" + getX() + ", " + getY() + ")";
     }
+
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + ((this.x == null) ? 0 : this.x.hashCode());
+	result = prime * result + ((this.y == null) ? 0 : this.y.hashCode());
+	
+	return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	return obj != null && this.getClass() == obj.getClass() && fieldsMatch((AbstractCoordinates) obj);
+    }
+
+    private boolean fieldsMatch(AbstractCoordinates obj) {
+	return obj != null && this.x.equals(obj.x) && this.y.equals(obj.y);
+    }
 }
