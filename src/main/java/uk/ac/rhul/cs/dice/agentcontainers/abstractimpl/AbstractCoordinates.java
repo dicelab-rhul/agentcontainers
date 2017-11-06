@@ -4,6 +4,7 @@ import uk.ac.rhul.cs.dice.agentcontainers.enums.Orientation;
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Coordinates;
 
 public class AbstractCoordinates implements Coordinates {
+    private static final long serialVersionUID = -4993479545710892560L;
     private Integer x;
     private Integer y;
     

@@ -1,8 +1,10 @@
 package uk.ac.rhul.cs.dice.agentcontainers.interfaces;
 
+import java.io.Serializable;
+
 import uk.ac.rhul.cs.dice.agentcontainers.enums.Orientation;
 
-public interface Coordinates {
+public interface Coordinates extends Serializable {
     public abstract int getX();
     public abstract int getY();
     public abstract Coordinates getNeighborCoordinates(Orientation orientation);
