@@ -5,8 +5,19 @@ import java.io.Serializable;
 import uk.ac.rhul.cs.dice.agentcontainers.enums.Orientation;
 
 public interface Coordinates extends Serializable {
+    
     public abstract int getX();
+    
     public abstract int getY();
+    
+    public default boolean isXSuch(int candidate) {
+	return getX() == candidate;
+    }
+    
+    public default boolean isYSuch(int candidate) {
+	return getY() == candidate;
+    }
+    
     public abstract Coordinates getNeighborCoordinates(Orientation orientation);
     
     public default Coordinates getNorthernCoordinates() {
