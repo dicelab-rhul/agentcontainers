@@ -1,5 +1,8 @@
 package uk.ac.rhul.cs.dice.agentcontainers.interfaces;
 
-public interface Location {
+import java.io.Serializable;
 
+@FunctionalInterface
+public interface Location extends Serializable {
+    public abstract Object serialize();
 }
