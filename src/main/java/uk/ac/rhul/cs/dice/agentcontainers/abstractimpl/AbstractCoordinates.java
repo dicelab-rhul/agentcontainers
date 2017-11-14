@@ -3,11 +3,26 @@ package uk.ac.rhul.cs.dice.agentcontainers.abstractimpl;
 import uk.ac.rhul.cs.dice.agentcontainers.enums.Orientation;
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Coordinates;
 
+/**
+ * 
+ * An abstract implementation of {@link Coordinates}. It has two {@link Integer} values (x, y).
+ * 
+ * @author cloudstrife9999
+ *
+ */
 public class AbstractCoordinates implements Coordinates {
     private static final long serialVersionUID = -4993479545710892560L;
     private Integer x;
     private Integer y;
     
+    /**
+     * 
+     * Constructs an {@link AbstractCoordinates} object from two {@link Integer} values.
+     * 
+     * @param x an {@link Integer} representing the x coordinate.
+     * @param y an {@link Integer} representing the y coordinate.
+     * 
+     */
     public AbstractCoordinates(int x, int y) {
 	this.x = Integer.valueOf(x);
 	this.y = Integer.valueOf(y);

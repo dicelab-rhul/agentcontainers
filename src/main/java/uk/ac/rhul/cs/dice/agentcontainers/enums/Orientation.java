@@ -1,5 +1,12 @@
 package uk.ac.rhul.cs.dice.agentcontainers.enums;
 
+/**
+ * 
+ * This enumeration contains the 4 cardinal points (NORTH, SOUTH, WEST, and EAST).
+ * 
+ * @author cloudstrife9999
+ *
+ */
 public enum Orientation {
     NORTH(Mappings.E, Mappings.W, Mappings.S),
     SOUTH(Mappings.W, Mappings.E, Mappings.N),
@@ -22,18 +29,48 @@ public enum Orientation {
      * 
      */
     
+    /**
+     * 
+     * Returns the {@link Orientation} on the right w.r.t. this {@link Orientation}.
+     * 
+     * @return the {@link Orientation} on the right w.r.t. this {@link Orientation}.
+     * 
+     */
     public Orientation getRight() {
 	return fromstring(this.right);
     }
     
+    /**
+     * 
+     * Returns the {@link Orientation} on the left w.r.t. this {@link Orientation}.
+     * 
+     * @return the {@link Orientation} on the left w.r.t. this {@link Orientation}.
+     * 
+     */
     public Orientation getLeft() {
 	return fromstring(this.left);
     }
     
+    /**
+     * 
+     * Returns the {@link Orientation} opposite w.r.t. this {@link Orientation}.
+     * 
+     * @return the {@link Orientation} opposite w.r.t. this {@link Orientation}.
+     * 
+     */
     public Orientation getOpposite() {
 	return fromstring(this.opposite);
     }
     
+    /**
+     * 
+     * It creates an {@link Orientation} from a {@link String} representation, similar to (but not equals) the {@link #valueOf(String)} method.
+     * 
+     * @param code the {@link String} containing the representation of an {@link Orientation}.
+     * 
+     * @return the created {@link Orientation}.
+     * 
+     */
     public static Orientation fromstring(String code) {
 	switch (code.toUpperCase()) {
 	case Mappings.N:
