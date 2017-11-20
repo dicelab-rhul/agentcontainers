@@ -82,7 +82,11 @@ public class AbstractCoordinates implements Coordinates {
 
     @Override
     public boolean equals(Object obj) {
-	return obj != null && this.getClass() == obj.getClass() && fieldsMatch((AbstractCoordinates) obj);
+	return obj != null && checkClasses(obj) && fieldsMatch((AbstractCoordinates) obj);
+    }
+
+    private boolean checkClasses(Object obj) {
+	return getClass() == obj.getClass() || this.getClass().isAssignableFrom(obj.getClass());
     }
 
     private boolean fieldsMatch(AbstractCoordinates obj) {
