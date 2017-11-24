@@ -12,6 +12,7 @@ import java.util.Collections;
  * @author cloudstrife9999
  *
  */
+@FunctionalInterface
 public interface Container {
     
     /**
