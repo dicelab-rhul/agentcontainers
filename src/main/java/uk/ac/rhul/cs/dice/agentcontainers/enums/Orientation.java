@@ -86,6 +86,15 @@ public enum Orientation {
 	}
     }
     
+    /**
+     * 
+     * Returns the number of clockwise 90 degrees left-turns needed to reach <code>other</code>. The result is always modulo 4. In particular -1 is returned in place of 3.
+     * 
+     * @param other the target {@link Orientation}.
+     * 
+     * @return the number of clockwise 90 degrees left-turns needed to reach <code>other</code> modulo 4 (with -1 in place of 3).
+     * 
+     */
     public int getDifferenceIn90DegreesCCWFrom(Orientation other) {
 	if(this.getLeft().equals(other)) {
 	    return 1;

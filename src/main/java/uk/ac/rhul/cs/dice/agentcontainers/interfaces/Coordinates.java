@@ -263,10 +263,28 @@ public interface Coordinates extends Serializable {
 	return getBackCoordinates(orientation).getRightCoordinates(orientation);
     }
     
+    /**
+     * 
+     * Returns the horizontal difference between <code>this</code> and <code>other</code>.
+     * 
+     * @param other a {@link Coordinates} object.
+     * 
+     * @return <code>this</code>.{@link #getX()} - <code>other</code>.{@link #getX()}
+     * 
+     */
     public default int getHorizontalDifference(Coordinates other) {
 	return getX() - other.getX();
     }
     
+    /**
+     * 
+     * Returns the vertical difference between <code>this</code> and <code>other</code>.
+     * 
+     * @param other a {@link Coordinates} object.
+     * 
+     * @return <code>this</code>.{@link #getY()} - <code>other</code>.{@link #getY()}
+     * 
+     */
     public default int getVerticalDifference(Coordinates other) {
 	return getY() - other.getY();
     }
