@@ -262,4 +262,12 @@ public interface Coordinates extends Serializable {
     public default Coordinates getBackRightCoordinates(Orientation orientation) {
 	return getBackCoordinates(orientation).getRightCoordinates(orientation);
     }
+    
+    public default int getHorizontalDifference(Coordinates other) {
+	return getX() - other.getX();
+    }
+    
+    public default int getVerticalDifference(Coordinates other) {
+	return getY() - other.getY();
+    }
 }

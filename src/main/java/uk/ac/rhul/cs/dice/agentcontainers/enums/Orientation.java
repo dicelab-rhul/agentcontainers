@@ -86,6 +86,21 @@ public enum Orientation {
 	}
     }
     
+    public int getDifferenceIn90DegreesCCWFrom(Orientation other) {
+	if(this.getLeft().equals(other)) {
+	    return 1;
+	}
+	else if(this.getRight().equals(other)) {
+	    return -1;
+	}
+	else if(this.getOpposite().equals(other)) {
+	    return 2;
+	}
+	else {
+	    return 0;
+	}
+    }
+    
     private static class Mappings {
 	public static final String N = "NORTH";
 	public static final String S = "SOUTH";
