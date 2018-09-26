@@ -3,6 +3,8 @@ package uk.ac.rhul.cs.dice.agentcontainers.interfaces;
 import java.util.Collection;
 import java.util.Collections;
 
+import uk.ac.rhul.cs.dice.agentcommon.enums.ContentType;
+
 /**
  * 
  * This interface is for generic containers.<br /><br />
@@ -12,7 +14,6 @@ import java.util.Collections;
  * @author cloudstrife9999
  *
  */
-@FunctionalInterface
 public interface Container {
     
     /**
@@ -45,4 +46,7 @@ public interface Container {
     public default int countSubContainers() {
 	return getSubContainers().size();
     }
+    
+    
+    public abstract <T> void sendData(ContentType contentType, byte[] content, Collection<T> recipientsIds);
 }
