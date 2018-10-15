@@ -1,5 +1,7 @@
 package uk.ac.rhul.cs.dice.agentcontainers.abstractimpl;
 
+import java.util.Random;
+
 import uk.ac.rhul.cs.dice.agentcontainers.enums.Orientation;
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Coordinates;
 
@@ -91,5 +93,21 @@ public class AbstractCoordinates implements Coordinates {
 
     private boolean fieldsMatch(Coordinates obj) {
 	return obj != null && this.x.equals(obj.getX()) && this.y.equals(obj.getY());
+    }
+
+    /**
+     * 
+     * Returns a pair of random {@link Coordinates}.
+     * 
+     * @param maxX the inclusive upper limit for the X coordinate.
+     * @param maxY the inclusive upper limit for the Y coordinate.
+     * 
+     * @return a pair of random {@link Coordinates}.
+     * 
+     */
+    public static Coordinates randomCoordinates(Integer maxX, Integer maxY) {
+	Random rng = new Random(System.nanoTime());
+	
+	return new AbstractCoordinates(rng.nextInt(maxX + 1), rng.nextInt(maxY + 1));
     }
 }
