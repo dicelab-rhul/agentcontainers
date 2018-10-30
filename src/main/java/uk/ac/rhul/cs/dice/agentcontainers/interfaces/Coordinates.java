@@ -288,4 +288,111 @@ public interface Coordinates extends Serializable {
     public default int getVerticalDifference(Coordinates other) {
 	return getY() - other.getY();
     }
+    
+    /**
+     * 
+     * Returns whether both <code>x</code> and <code>y</code> match the X and Y values of this {@link Coordinates} object.
+     * 
+     * @param x an integer.
+     * @param y an integer.
+     * 
+     * @return whether or not both <code>x</code> and <code>y</code> match the X and Y values of this {@link Coordinates} object.
+     * 
+     */
+    public default boolean match(int x, int y) {
+	return getX() == x && getY() == y;
+    }
+    
+    /**
+     * 
+     * Returns whether <code>x</code> matches the X value of this {@link Coordinates} object.
+     * 
+     * @param x an integer.
+     * 
+     * @return whether or not <code>x</code> matches the X value of this {@link Coordinates} object.
+     * 
+     */
+    public default boolean matchForX(int x) {
+	return match(x, getY());
+    }
+    
+    /**
+     * 
+     * Returns whether the X value of the {@link Coordinates} object passed as parameter matches the X value of this {@link Coordinates} object. If <code>coordinates</code> is <code>null</code>, <code>false</code> is returned.
+     * 
+     * @param <T> an implementation of {@link Coordinates}.
+     * @param coordinates an object of type <code>T</code>.
+     * 
+     * @return whether or not the X value of the {@link Coordinates} object passed as parameter matches the X value of this {@link Coordinates} object.
+     * 
+     */
+    public default <T extends Coordinates> boolean matchForX(T coordinates) {
+	return coordinates != null && matchForX(coordinates.getX());
+    }
+    
+    /**
+     * 
+     * Returns whether <code>y</code> matches the Y value of this {@link Coordinates} object.
+     * 
+     * @param y an integer.
+     * 
+     * @return whether or not <code>y</code> matches the Y value of this {@link Coordinates} object.
+     * 
+     */
+    public default boolean matchForY(int y) {
+	return match(getX(), y);
+    }
+    
+    /**
+     * 
+     * Returns whether the Y value of the {@link Coordinates} object passed as parameter matches the Y value of this {@link Coordinates} object. If <code>coordinates</code> is <code>null</code>, <code>false</code> is returned.
+     * 
+     * @param <T> an implementation of {@link Coordinates}.
+     * @param coordinates an object of type <code>T</code>.
+     * 
+     * @return whether or not the Y value of the {@link Coordinates} object passed as parameter matches the Y value of this {@link Coordinates} object.
+     * 
+     */
+    public default <T extends Coordinates> boolean matchForY(T coordinates) {
+	return coordinates != null && matchForY(coordinates.getY());
+    }
+    
+    /**
+     * 
+     * Returns whether both the X and Y values of the {@link Coordinates} object passed as parameter do not match respectively the X and Y values of this {@link Coordinates} object. If <code>coordinates</code> is <code>null</code>, <code>false</code> is returned.
+     * 
+     * @param <T> an implementation of {@link Coordinates}.
+     * @param coordinates an object of type <code>T</code>.
+     * 
+     * @return whether or not both the X and Y values of the {@link Coordinates} object passed as parameter do not match respectively the X and Y values of this {@link Coordinates} object.
+     * 
+     */
+    public default <T extends Coordinates> boolean noMatchForXAndY(T coordinates) {
+	return coordinates != null && noMatchForXAndY(coordinates.getX(), coordinates.getY());
+    }
+    
+    /**
+     * 
+     * Returns whether both <code>x</code> and <code>y</code> do not match respectively the X and Y values of this {@link Coordinates} object.
+     * 
+     * @param x an integer.
+     * @param y an integer.
+     * 
+     * @return whether or not both <code>x</code> and <code>y</code> do not match respectively the X and Y values of this {@link Coordinates} object.
+     * 
+     */
+    public default boolean noMatchForXAndY(int x, int y) {
+	return x != getX() && y != getY();
+    }
+
+    /**
+     * 
+     * Returns whether the X and Y values of this this {@link Coordinates} object are equals.
+     * 
+     * @return whether or not the X and Y values of this this {@link Coordinates} object are equals.
+     * 
+     */
+    public default boolean areXandYEquals() {
+	return getX() == getY();
+    }
 }

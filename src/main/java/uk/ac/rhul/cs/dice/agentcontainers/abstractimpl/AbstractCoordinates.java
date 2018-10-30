@@ -1,8 +1,5 @@
 package uk.ac.rhul.cs.dice.agentcontainers.abstractimpl;
 
-import java.util.Random;
-
-import uk.ac.rhul.cs.dice.agentcontainers.enums.Orientation;
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Coordinates;
 
 /**
@@ -12,7 +9,7 @@ import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Coordinates;
  * @author cloudstrife9999
  *
  */
-public class AbstractCoordinates implements Coordinates {
+public abstract class AbstractCoordinates implements Coordinates {
     private static final long serialVersionUID = -4993479545710892560L;
     private Integer x;
     private Integer y;
@@ -50,22 +47,6 @@ public class AbstractCoordinates implements Coordinates {
     public int getY() {
 	return this.y.intValue();
     }
-
-    @Override
-    public Coordinates getNeighborCoordinates(Orientation orientation) {
-	switch (orientation) {
-	case NORTH:
-	    return new AbstractCoordinates(this.x, this.y - 1);
-	case SOUTH:
-	    return new AbstractCoordinates(this.x, this.y + 1);
-	case WEST:
-	    return new AbstractCoordinates(this.x - 1, this.y);
-	case EAST:
-	    return new AbstractCoordinates(this.x + 1, this.y);
-	default:
-	    throw new IllegalArgumentException();
-	}
-    }
     
     @Override
     public String toString() {
@@ -93,21 +74,5 @@ public class AbstractCoordinates implements Coordinates {
 
     private boolean fieldsMatch(Coordinates obj) {
 	return obj != null && this.x.equals(obj.getX()) && this.y.equals(obj.getY());
-    }
-
-    /**
-     * 
-     * Returns a pair of random {@link Coordinates}.
-     * 
-     * @param maxX the inclusive upper limit for the X coordinate.
-     * @param maxY the inclusive upper limit for the Y coordinate.
-     * 
-     * @return a pair of random {@link Coordinates}.
-     * 
-     */
-    public static Coordinates randomCoordinates(Integer maxX, Integer maxY) {
-	Random rng = new Random(System.nanoTime());
-	
-	return new AbstractCoordinates(rng.nextInt(maxX + 1), rng.nextInt(maxY + 1));
     }
 }
