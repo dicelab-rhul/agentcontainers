@@ -71,6 +71,7 @@ public abstract class AbstractEnvironment implements Environment {
     
     /**
      * 
+     * 
      * Returns the {@link EnvironmentAppearance} of this {@link AbstractEnvironment}.
      * 
      */

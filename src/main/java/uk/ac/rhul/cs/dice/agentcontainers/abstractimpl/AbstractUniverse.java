@@ -1,7 +1,10 @@
 package uk.ac.rhul.cs.dice.agentcontainers.abstractimpl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Ambient;
 import uk.ac.rhul.cs.dice.agentcontainers.interfaces.Universe;
@@ -26,13 +29,26 @@ public abstract class AbstractUniverse implements Universe {
      * 
      */
     public AbstractUniverse(UniverseAppearance appearance) {
-	this.appearance = appearance;
-	this.ambients = new ArrayList<>();
+	this(appearance, Collections.emptyList());
     }
     
     /**
      * 
-     * Constructs an {@link AbstractUniverse} from a {@link UniverseAppearance} and a {@link List} of {@link Ambient}s.
+     * Constructs an {@link AbstractUniverse} from a {@link UniverseAppearance} and a single {@link Ambient}, which becomes the main ambient.
+     * 
+     * @param appearance a {@link UniverseAppearance}.
+     * @param ambients an {@link Ambient}.
+     * 
+     */
+    public AbstractUniverse(UniverseAppearance appearance, Ambient ambient) {
+	this(appearance, ambient == null ? Collections.emptyList() : Arrays.asList(ambient));
+    }
+    
+    /**
+     * 
+     * Constructs an {@link AbstractUniverse} from a {@link UniverseAppearance} and a {@link List} of {@link Ambient}s.<br /><br />
+     * If the {@link List} of {@link Ambient}s is not <code>null</code> and not empty, the first element become the main ambient (see {@link #getMainAmbient()}).<br /><br />
+     * All the non-<code>null</code> elements of the {@link List} are added as ambients.
      * 
      * @param appearance a {@link UniverseAppearance}.
      * @param ambients a {@link List} of {@link Ambient}s.
@@ -40,22 +56,10 @@ public abstract class AbstractUniverse implements Universe {
      */
     public AbstractUniverse(UniverseAppearance appearance, List<Ambient> ambients) {
 	this.appearance = appearance;
-	this.ambients = ambients == null ? new ArrayList<>() : ambients;
-    }
-    
-    /**
-     * 
-     * Constructs an {@link AbstractUniverse} from a {@link UniverseAppearance} and a single {@link Ambient}.
-     * 
-     * @param appearance a {@link UniverseAppearance}.
-     * @param ambients an {@link Ambient}.
-     * 
-     */
-    public AbstractUniverse(UniverseAppearance appearance, Ambient ambient) {
-	this(appearance);
+	this.ambients = new ArrayList<>();
 	
-	if(ambient != null) {
-	    this.ambients.add(ambient);
+	if(ambients != null) {
+	    ambients.stream().filter(Objects::nonNull).forEach(this.ambients::add);
 	}
     }
     
@@ -77,5 +81,10 @@ public abstract class AbstractUniverse implements Universe {
     @Override
     public void addAmbient(Ambient ambient) {
 	this.ambients.add(ambient);
+    }
+    
+    @Override
+    public void addMainAmbient(Ambient ambient) {
+	this.ambients.add(0, ambient);
     }
 }

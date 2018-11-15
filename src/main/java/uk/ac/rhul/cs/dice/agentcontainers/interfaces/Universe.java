@@ -55,10 +55,21 @@ public interface Universe {
     
     /**
      * 
-     * Adds a new {@link Ambient} to the ones already existing in this {@link Universe}.
+     * Adds a new {@link Ambient} to the ones already existing in this {@link Universe}.<br/>
+     * If this {@link Universe} has no other {@link Ambient}s, the new ambient automatically becomes the main ambient (see {@link #getMainAmbient()}).
      * 
      * @param ambient a new {@link Ambient} to be added.
      *  
      */
     public abstract void addAmbient(Ambient ambient);
+    
+    /**
+     * 
+     * Adds a new {@link Ambient} to the ones already existing in this {@link Universe}.<br/>
+     * The new {@link Ambient} becomes the new main ambient (see {@link #getMainAmbient()}).
+     * 
+     * @param ambient a new {@link Ambient} to be added.
+     *  
+     */
+    public abstract void addMainAmbient(Ambient ambient);
 }
