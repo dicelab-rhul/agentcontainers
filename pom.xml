@@ -20,7 +20,6 @@
 			<groupId>uk.ac.rhul.cs.dice</groupId>
 			<artifactId>agentcommon</artifactId>
 			<version>1.0.1</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
